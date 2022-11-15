@@ -26,7 +26,7 @@ API.interceptors.response.use(
     if (err.response.status === 401 && !err.config._isRetry) {
       originalRequest._isRetry = true;
       try {
-        const response = await axios.post(`${API_ADDRESS}/authorisation.php`, {
+        const response = await axios.post(`${API_ADDRESS}/token/refresh`, {
           refresh_token: localStorage.getItem("refreshToken"),
         });
         localStorage.setItem("accessToken", response.data.access);
