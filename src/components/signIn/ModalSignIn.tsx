@@ -29,7 +29,7 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
   const postEmail = async (e: any) => {
     e.preventDefault();
 
-    API(`/{апи даяр эмес экен}/`, {
+    API(`/{апи даяр эмес экен жон эле}/`, {
       method: "POST",
       data: forgot,
     })
