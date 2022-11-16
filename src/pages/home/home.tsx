@@ -1,6 +1,7 @@
 import React from 'react';
-import HomeHero from "./homeHero";
+
 import ContactUs from "./contactUs";
+import HomeHero from "./homeHero";
 
 const Home = () => {
     return (

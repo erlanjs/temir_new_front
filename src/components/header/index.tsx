@@ -3,15 +3,44 @@ import Logo from "../../assets/svg/logo";
 import {Link} from 'react-router-dom'
 
 const Index = () => {
+
+    const navLeft = [
+        {
+            items:'Home',
+            link:'/'
+        },
+        {
+            items:'products',
+            link:'/products'
+        },
+    ]
+
+    const navRight = [
+        {
+            items:'about',
+            link:'/about'
+        },
+        {
+            items:'contact',
+            link:'/contact'
+        },
+    ]
+
     return (
         <header id='header' className='bg-black'>
             <div className="container">
                 <div className='navbar p-3  flex justify-evenly items-center'>
-                    <Link to={'/'}> <a href="#" className='text=[14px] uppercase font-light tracking-wider'>home</a></Link>
-                    <Link to={'/products'}> <a href="#" className='text=[14px] uppercase font-light tracking-wider'>products</a></Link>
+                    {
+                        navLeft.map(el => (
+                            <Link to={el.link} className='text=[14px] uppercase font-light tracking-wider'>{el.items}</Link>
+                        ))
+                    }
                     <Link to={'/'}><Logo/></Link>
-                    <Link to={'/about'}> <a href="#" className='text=[14px] uppercase font-light tracking-wider'>about</a></Link>
-                    <Link to={'/contact'}>  <a href="#" className='text=[14px] uppercase font-light tracking-wider'>contact us</a></Link>
+                    {
+                        navRight.map(el => (
+                            <Link to={el.link}  className='text=[14px] uppercase font-light tracking-wider'>{el.items}</Link>
+                        ))
+                    }
                 </div>
                 <div className='absolute right-20 top-7'>
                    <Link to={'/basket'}>
