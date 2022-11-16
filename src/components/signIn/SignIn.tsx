@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -16,10 +16,10 @@ export default function SignIn() {
   const { id } = useParams();
   const navigation = useNavigate();
   const [modal, setModal] = useState<boolean>(false);
+  const [errorValidate, setErrorValidate] = useState<boolean>(false);
   const [auth, setAuth] = useState({ password: "", id: id });
   const {
     register,
-    setError,
     formState: { errors },
   } = useForm<ISignIn>();
   const sigIn = (e: any) => {
@@ -35,6 +35,7 @@ export default function SignIn() {
       })
       .catch((error) => {
         console.log(error);
+        setErrorValidate(true);
       });
   };
   paramsUserId(id);
@@ -49,8 +50,8 @@ export default function SignIn() {
           name="password"
           onChange={(e) => setAuth({ ...auth, password: e.target.value })}
           className={`w-full py-[16px] text-black pl-[14px] mb-[10px] rounded-[5px] ${
-            errors.password && "border-[2px] border-red"
-          }`}
+            errorValidate && "border-2 border-rose-500"
+          } `}
         />
         <p
           className="text-[#00F0FF] text-[15px] mb-[46px] cursor-pointer"
