@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import Logo from "../../assets/svg/logo";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Index = () => {
 
