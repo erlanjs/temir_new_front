@@ -25,11 +25,7 @@ const Footer = () => {
         {
             subtitle2: "Near: Rado, Pandora, Steve Madden"
         },
-        // {
-        //     subtitle: " Steve Madden"
-        // },
     ]
-
 
     return (
         <footer id="footer">
@@ -60,7 +56,6 @@ const Footer = () => {
                             ))
                         }
                     </div>
-
                 </div>
             </div>
         </footer>
