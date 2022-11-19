@@ -3,11 +3,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import ReducerImage from "../components/media/reducer/ReducerImage";
 import ReducerVideo from "../components/media/reducer/ReducerVideo";
 import ReducerProduct from "../components/products/reducer/ReducerProduct";
+import ReducerContact from "../components/contact/reducer/ReducerContact";
 
 const rootReducer = combineReducers({
   ReducerImage,
   ReducerVideo,
   ReducerProduct,
+  ReducerContact,
 });
 
 export const setUpStore = () => {
