@@ -1,36 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface EmailTypes {
-  id: string;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  user: string;
-  email: string;
-}
-
-interface BankAccountTypes {
-  id: string;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  user: string;
-  back_account: string | number;
-}
-
-interface BankCartTypes {
-  id: string;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  user: string;
-  back_cart: string | number;
-}
+import {
+  BankAccountTypes,
+  BankCartTypes,
+  EmailTypes,
+  PhoneUserTypes,
+} from "../../../redux/Types";
 
 interface ContactState {
-  email: EmailTypes[];
   bankAcc: BankAccountTypes[];
   bankCart: BankCartTypes[];
+  email: EmailTypes[];
+  phone: PhoneUserTypes[];
   error: string;
   isLoading: boolean;
 }
@@ -79,12 +59,26 @@ export const ContactReducer = createSlice({
     BankCardFetching(state) {
       state.isLoading = true;
     },
-    BankCardSuccess(state, action: PayloadAction<BankAccountTypes[]>) {
+    BankCardSuccess(state, action: PayloadAction<BankCartTypes[]>) {
       state.isLoading = false;
       state.error = "";
-      state.bankAcc = action.payload;
+      state.bankCart = action.payload;
     },
     BankCardError(state, action: PayloadAction<any>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // //Phone number
+    PhoneStateFetching(state) {
+      state.isLoading = true;
+    },
+    PhoneStateSuccess(state, action: PayloadAction<PhoneUserTypes[]>) {
+      state.isLoading = false;
+      state.error = "";
+      state.phone = action.payload;
+    },
+    PhoneStateError(state, action: PayloadAction<any>) {
       state.isLoading = false;
       state.error = action.payload;
     },
