@@ -1,5 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import motion from "../../assets/img/motion-logo.svg"
+import {BsWhatsapp} from "react-icons/bs";
+import {FiFacebook} from "react-icons/fi";
+import {AiOutlineInstagram, AiOutlineYoutube} from "react-icons/ai";
+import {CgMail} from "react-icons/cg";
 
 const Footer = () => {
     const menuLeft = [
@@ -45,7 +50,7 @@ const Footer = () => {
                             ))
                         }
                     </div>
-                    <div className="py-10">
+                    <div className="py-5">
                         {
                             des.map(el => (
                                 <div>
@@ -55,6 +60,18 @@ const Footer = () => {
 
                             ))
                         }
+                    </div>
+                    <div className="flex items-center justify-center py-5">
+                        <Link to={'/'} className="text-3xl mx-2"><BsWhatsapp/></Link>
+                        <Link to={'/'} className="text-3xl mx-2"><FiFacebook/></Link>
+                        <Link to={'/'} className="text-3xl mx-2"><AiOutlineYoutube/></Link>
+                        <Link to={'/'} className="text-3xl mx-2"><AiOutlineInstagram/></Link>
+                        <Link to={'/'} className="text-3xl mx-2"><CgMail/></Link>
+                    </div>
+
+                    <div className="flex items-center">
+                        <h4 className="text-sm mr-2.5">Developed by</h4>
+                        <img src={motion} alt="img" className="ml-2.5"/>
                     </div>
                 </div>
             </div>
