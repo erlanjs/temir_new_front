@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { HiUpload } from 'react-icons/hi'
 
 //local
 import Card1 from '../../../assets/img/card1.svg'
 import Card5 from '../../../assets/img/card5.svg'
 import Card7 from '../../../assets/img/card7.svg'
+import EmptyCard from '../../../assets/img/empty-card.svg'
 
 const CardsPremimum = () => {
   const classesText =
@@ -26,6 +27,21 @@ const CardsPremimum = () => {
     },
   ]
 
+  const [mainCard, setMainCard] = useState<any>(Card1)
+
+  const [imageUrl, setImageUrl] = useState<any>("")
+  const fileReader = new FileReader()
+  fileReader.onloadend = () => {
+    setImageUrl(fileReader.result)
+  }
+  const [cardData, setCardData] = useState<any>({title: "TEMIR", logo: imageUrl})
+  console.log(imageUrl)
+  // const handleChangeUrl = (e) => fileReader.readAsDataURL(e.target.files[0])
+
+  const handleChange = (e:any) => {
+    setCardData({...cardData, [e.target.name]: e.target.name !== "logo" ? e.target.value.toUpperCase() : fileReader.readAsDataURL(e.target.files[0])})
+  }
+
   return (
     <section>
       <div className="container mx-auto">
@@ -42,9 +58,9 @@ const CardsPremimum = () => {
               </p>
               <div className="bg-[#171717] shadow-[inset_-8px_-9px_11px_rgba(30,30,30,0.25),inset_6px_7px_10px_#000000] rounded-[10px] p-2 flex w-full">
                 {option.map((el, idx) => (
-                  <div key={idx} className="w-[30%]">
-                    <div>
-                      <img src={el.image} alt="" className="w-full" />
+                  <div key={idx}>
+                    <div onClick={() => setMainCard(el.image)}>
+                      <img src={el.image} alt="" className="w-full cursor-pointer" />
                     </div>
                     <p>{el.title}</p>
                   </div>
@@ -57,9 +73,11 @@ const CardsPremimum = () => {
                   Name
                 </p>
                 <input
+                  onChange={handleChange}
                   type="text"
                   placeholder="Insert your name"
                   className="text-white bg-[rgba(54,54,56,0.5)] outline-none px-2 py-3 w-[65%] shadow-[0px_2px_10px_rgba(0,0,0,0.25)] rounded-[10px] placeholder:text-[16px] placeholder:text-[rgba(255,255,255,0.27)]"
+                  name="title"
                 />
               </div>
               <div className="my-3">
@@ -68,8 +86,10 @@ const CardsPremimum = () => {
                 </p>
                 <div className="w-[65%] bg-[rgba(54,54,56,0.5)] shadow-[0px_2px_10px_rgba(0,0,0,0.25)] px-2 py-3 text-[16px] text-[rgba(255,255,255,0.27)] rounded-[10px]">
                   <input
+                    onChange={handleChange}
                     id="input_file"
                     type="file"
+                    name="logo"
                     className="opacity-0 hidden"
                   />
                   <label
@@ -88,8 +108,16 @@ const CardsPremimum = () => {
               </div>
             </div>
           </div>
-          <div className="lg:w-[50%] max-lg:w-full">
-            <img src={Card1} alt="" className="w-full" />
+          <div className="temir-card lg:w-[50%] h-full max-lg:w-full relative overflow-hidden">
+            <div className='absolute z-10 flex flex-col w-full my-2 top-[25%] items-center'>
+              {imageUrl? <img  src={imageUrl} width={300} className='temir-card--logo mx-auto h-[40px]'/> :""}
+            </div>
+           <div className='absolute z-10 flex flex-col w-full bottom-[45%] items-center flex-nowrap'>
+             <h1 className='px-6 temir-card--title m-auto left-0 text-[40px] font-bold opacity-75 tracking-widest'>{cardData.title}</h1>
+           </div>
+            <div className=''>
+              <img src={EmptyCard} alt="" className="w-full" />
+            </div>
           </div>
         </div>
       </div>
