@@ -5,7 +5,6 @@ import QrCode from './QrCode';
 import ThreeNumber from './ThreeNumber';
 import MallEmirate from './MallEmirate';
 import Contact from "./Contact";
-import Footer from "./Footer";
 
 const Home = () => {
     return (
@@ -16,7 +15,6 @@ const Home = () => {
             <ThreeNumber/>
             <Contact/>
             <MallEmirate/>
-            <Footer/>
         </>
     );
 };

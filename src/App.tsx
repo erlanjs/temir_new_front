@@ -12,6 +12,7 @@ import MediaCardImage from "./components/media/MediaCardImage";
 import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
+import Footer from "./pages/home/Footer";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           element={<Media children={<MediaCardVideos />} />}
         />
       </Routes>
+      <Footer/>
     </>
   );
 }
