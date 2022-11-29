@@ -6,7 +6,6 @@ import AddPhotoSvg from "../../assets/svg/AddPhotoSvg";
 import API from "../api/Api";
 import { getActionProductAdmin } from "./reducer/ActionAdminProduct";
 import { getIdUserParams } from "../helper";
-import DropDown from "../ui/DropDown";
 
 export default function AdminProduct() {
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
