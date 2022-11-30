@@ -13,7 +13,7 @@ import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import Footer from "./pages/home/Footer";
-import MediaAdmin from "./components/adminMedia/MediaAdmin";
+// import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import AdminProduct from "./components/adminProduct/AdminProduct";
 
@@ -53,6 +53,8 @@ function App() {
             </Interface>
           }
         />
+        <Route path="/company" element={<Company />} />
+        <Route path="/admin" element={<Contact />} />
         <Route
           path="/image"
           element={<Media children={<MediaCardImage />} />}
