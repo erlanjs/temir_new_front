@@ -15,7 +15,9 @@ export const ReducerBasket = createSlice({
     },
     basketSuccess(state, action: PayloadAction<any>) {
       state.isLoading = false
+      state.basket = JSON.parse(localStorage.getItem('basket') as any) || []
       state.basket = [...state.basket, action.payload]
+      localStorage.setItem('basket', JSON.stringify(state.basket))
     },
     basketError(state, action: PayloadAction<any>) {
       state.isLoading = false
