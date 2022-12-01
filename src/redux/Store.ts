@@ -6,6 +6,7 @@ import ReducerProduct from "../components/products/reducer/ReducerProduct";
 import ReducerContact from "../components/contact/reducer/ReducerContact";
 import ReducerCompany from "../components/compony/reducer/ReducerCompany";
 import ReducerCompanyDetails from "../components/compony/reducer/ReducerCompanyDetails";
+import ReducerBasket from "../pages/basket/ReducerBasket/BasketSlice";
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   ReducerContact,
   ReducerCompany,
   ReducerCompanyDetails,
+  ReducerBasket,
 });
 
 export const setUpStore = () => {
