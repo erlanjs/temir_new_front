@@ -5,13 +5,13 @@ import DeleteSvgIcon from "../../assets/svg/DeleteSvgIcon";
 import PencilSvg from "../../assets/svg/PencilSvg";
 import API from "../api/Api";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { getActionMessengers } from "./reducer/ActionMessengers";
+import { getActionFollows } from "./reducer/ActionFollows";
 import { getIdUserParams } from "../helper";
-import ModalMessenger from "./ModalMessenger";
-import ModalChangeMessenger from "./ModalChangeMessenger";
+import ModalFollow from "./ModalFollow";
+import ModalChangeFollow from "./ModalChangeFollow";
 import "./style.scss";
 
-export default function AdminMessengers() {
+export default function AdminFollows() {
   const dispatch = useAppDispatch();
   const [modal, setModal] = useState(false);
   const [modalChange, setModalChange] = useState(false);
@@ -19,13 +19,13 @@ export default function AdminMessengers() {
   const { social } = useAppSelector((state) => state.MessengersReducer);
 
   useEffect(() => {
-    dispatch(getActionMessengers());
+    dispatch(getActionFollows());
   }, []);
 
   const deletedPost = (id: any) => {
     API.delete(`social/${id}`)
       .then(() => {
-        dispatch(getActionMessengers());
+        dispatch(getActionFollows());
       })
       .catch((error) => {
         alert("Errr");
@@ -75,8 +75,8 @@ export default function AdminMessengers() {
           <APlusSvg />
         </button>
       </div>
-      <ModalMessenger modal={modal} setModal={setModal} childern={""} />
-      <ModalChangeMessenger
+      <ModalFollow modal={modal} setModal={setModal} childern={""} />
+      <ModalChangeFollow
         postId={messengerId}
         modal={modalChange}
         setModal={setModalChange}

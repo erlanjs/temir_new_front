@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import API from "../api/Api";
 import { getIdUserParams } from "../helper";
-import { getActionMessengersId } from "./reducer/ActionMessengerId";
-import { getActionMessengers } from "./reducer/ActionMessengers";
+import { getActionFollow } from "./reducer/ActionFollow";
+import { getActionFollows } from "./reducer/ActionFollows";
 import "./style.scss";
 
 interface IModalApp {
@@ -32,8 +32,8 @@ export default function ModalChangeMessnger({
     API.patch(`social/${postId}`, update)
       .then((res) => {
         alert("Success");
-        dispatch(getActionMessengersId(postId));
-        dispatch(getActionMessengers());
+        dispatch(getActionFollow(postId));
+        dispatch(getActionFollows());
       })
       .catch((error) => {
         console.log(error);
@@ -42,8 +42,8 @@ export default function ModalChangeMessnger({
   };
 
   useEffect(() => {
-    dispatch(getActionMessengers());
-    dispatch(getActionMessengersId(postId));
+    dispatch(getActionFollows());
+    dispatch(getActionFollow(postId));
   }, [postId]);
 
   return (

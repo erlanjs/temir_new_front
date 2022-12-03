@@ -20,6 +20,7 @@ import HeaderAdmin from "./components/ui/HeaderAdmin";
 import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
 import AdminEmail from "./components/adminEmail/AdminEmail";
 import AdminMessengers from "./components/adminMessengers/AdminMessenger";
+import AdminFollows from "./components/adminFollowMe/AdminFollow";
 
 function App() {
   const listContact = [
@@ -38,8 +39,8 @@ function App() {
           link: "/emailPage",
         },
         {
-          name: "Social medias",
-          link: "/social-medias",
+          name: "Follow me",
+          link: "/follow",
         },
         {
           name: "Messenger",
@@ -111,6 +112,16 @@ function App() {
               title="Messengers"
               arrayList={listContact}
               children={<AdminMessengers />}
+            />
+          }
+        />
+        <Route
+          path="/follow"
+          element={
+            <HeaderAdmin
+              title="Follow me"
+              arrayList={listContact}
+              children={<AdminFollows />}
             />
           }
         />

@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../hooks";
 
 import API from "../api/Api";
 import { getIdUserParams } from "../helper";
-import { getActionMessengers } from "./reducer/ActionMessengers";
+import { getActionFollows } from "./reducer/ActionFollows";
 import "./style.scss";
 
 interface IModalApp {
@@ -50,7 +50,7 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
         setDescMessenger("");
         setMessengers("");
         setNameMessenger({ id: "", label: "" });
-        dispatch(getActionMessengers());
+        dispatch(getActionFollows());
       })
       .catch((error) => {
         alert("Error");

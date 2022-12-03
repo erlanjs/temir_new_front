@@ -31,11 +31,14 @@ export default function DropDown(props: DropdownProps) {
       </div>
       <ul
         style={{ display: active ? "block" : "none" }}
-        className={`bg-white mt-2 overflow-y-auto max-h-60 absolute w-[100%]`}
+        className={`z-[100] bg-white mt-2 overflow-y-auto max-h-60 absolute w-[100%]`}
       >
         {items?.map((item: any, index: Key | null | undefined) => (
           <li
-            onClick={() => navigate(item?.link)}
+            onClick={() => {
+              navigate(item?.link);
+              setActive(false);
+            }}
             key={index}
             className="p-2 text-sm hover:bg-sky-600 hover:text-white cursor-pointer"
           >

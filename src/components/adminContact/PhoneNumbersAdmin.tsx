@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import DeleteSvgIcon from "../../assets/svg/DeleteSvgIcon";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import API from "../api/Api";
@@ -6,9 +7,13 @@ import { getIdUserParams } from "../helper";
 import { getActionPhoneNumbers } from "./reducer/ActionPhoneNumbersAdmin";
 
 export default function PhoneNumbersAdmin() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const dispatch = useAppDispatch();
   const { phone } = useAppSelector((state) => state.PhoneNumbersReducer);
-  // const [dataNumbers, setDataNumbers] = useState({});
   const [number, setNumber] = useState({
     title: "",
     user: getIdUserParams(),
@@ -38,6 +43,10 @@ export default function PhoneNumbersAdmin() {
         console.log(error);
         alert("error");
       });
+  };
+
+  const inputChange = (e: any) => {
+    setNumber({ ...number, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
@@ -83,8 +92,9 @@ export default function PhoneNumbersAdmin() {
           value={number.title}
           placeholder="Enter your text..."
           style={{ resize: "none" }}
+          {...register("title", { required: "This is required" })}
           className={`bg-transparent w-[100%] pl-[16px] max-h-auto text-center`}
-          onChange={(e) => setNumber({ ...number, title: e.target.value })}
+          onChange={(e) => inputChange(e)}
         />
       </div>
       <div className="text-black py-[8px] bg-[#E7E0EC] rounded-b-[4px] mb-[33px] flex flex-col items-center">
@@ -93,11 +103,10 @@ export default function PhoneNumbersAdmin() {
           type="text"
           value={number.phone_number}
           placeholder="Enter your number..."
+          {...register("phone_number", { required: "This is required" })}
           style={{ resize: "none" }}
           className={`bg-transparent w-[100%] pl-[16px] max-h-auto text-center pb-[21px]`}
-          onChange={(e) =>
-            setNumber({ ...number, phone_number: e.target.value })
-          }
+          onChange={(e) => inputChange(e)}
         />
         <button
           className="text-white bg-[#6750A4] rounded-[60px] px-[24px] py-[9px] mb-[15px]"
