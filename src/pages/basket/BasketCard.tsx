@@ -1,17 +1,24 @@
 import React, { FC } from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
-
+import {TbTrash} from "react-icons/tb";
 //local
 import DeleteBasket from '../../assets/img/basketDelete.svg'
+import {useAppDispatch} from "../../hooks";
+import {deleteFromBasket, raiseTheQuantity, reduceTheQuantity} from "./ReducerBasket/ActionBasket";
+
 
 interface IProps {
   el: any
+  idx: number,
 }
 
-const BasketCard: FC<IProps> = ({ el }) => {
+const BasketCard: FC<IProps> = ({ el,idx }) => {
   const classesBgRounded =
-    'w-[30px] h-[30px] bg-[rgba(54,54,56,0.5)] rounded-[50%] flex justify-center items-center cursor-pointer'
+    'w-[35px] h-[35px] bg-[rgba(54,54,56,0.5)] rounded-[50%] flex justify-center items-center cursor-pointer'
   const quantityPrice = +el.quantity * +el.price
+
+  const dispatch = useAppDispatch()
+
   return (
     <div className="flex relative" key={el.id}>
       <div className="lg:w-[50%] max-lg:w-[85%] max-md:w-[60%] flex max-md:flex-col border-b-[1px] border-[#1E1E1E] max-lg:border-[#ffffff] max-lg:py-4">
@@ -34,13 +41,17 @@ const BasketCard: FC<IProps> = ({ el }) => {
             {el.quantity + ' x ' + el.price} AED
           </p>
           <div className="flex items-center max-md:my-1">
-            <span className={`${classesBgRounded}`}>
+            <span
+              onClick={() => dispatch(reduceTheQuantity(idx))}
+              className={`${classesBgRounded}`}>
               <AiOutlineMinus />
             </span>
             <p className="font-[Arial] text-[28px] font-normal px-2">
               {el.quantity}
             </p>
-            <span className={`${classesBgRounded}`}>
+            <span
+              onClick={() => dispatch(raiseTheQuantity(idx))}
+              className={`${classesBgRounded}`}>
               <AiOutlinePlus />
             </span>
           </div>
@@ -48,9 +59,10 @@ const BasketCard: FC<IProps> = ({ el }) => {
         </div>
         <div className="px-4">
           <div
+            onClick={() => dispatch(deleteFromBasket(idx))}
             className={`${classesBgRounded} absolute bottom-4 right-4 max-lg:left-[33%] max-md:left-[91%]`}
           >
-            <img src={DeleteBasket} alt="delete " />
+            <TbTrash className='text-red-700 text-2xl'/>
           </div>
         </div>
       </div>

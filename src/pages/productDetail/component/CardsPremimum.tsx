@@ -40,7 +40,7 @@ const CardsPremimum = () => {
     // id: basket.length ? basket[basket.length - 1].id + 1 : 1,
     title: cardData.title,
     logo: imageUrl,
-    img: "",
+    img: EmptyCard,
     // image: `${getImage()}`,
     price: "200",
     type: "",

@@ -22,6 +22,27 @@ export const ReducerBasket = createSlice({
     basketError(state, action: PayloadAction<any>) {
       state.isLoading = false
       state.error = action.payload
+    },
+
+    basketDelete(state, action: PayloadAction<any>){
+      let basket = JSON.parse(localStorage.getItem('basket') as any) || []
+      basket = basket.filter((el: any,idx:number) => idx !== action.payload)
+      state.basket = basket
+      localStorage.setItem('basket', JSON.stringify(basket) as any)
+    },
+
+    PlusTheNumber(state, action: PayloadAction<any>){
+      let basket = JSON.parse(localStorage.getItem('basket') as any) || []
+      basket = basket.map((el:any, idx:number) => idx === action.payload ? {...el, quantity: el.quantity + 1} : el)
+      state.basket = [...basket]
+      localStorage.setItem('basket', JSON.stringify(basket) as any)
+    },
+
+    MinusTheNumber(state, action: PayloadAction<any>){
+      let basket = JSON.parse(localStorage.getItem('basket') as any) || []
+      basket = basket.map((el:any, idx:number) => idx === action.payload ? {...el, quantity: el.quantity > 1? el.quantity - 1 : el.quantity} : el)
+      state.basket = [...basket]
+      localStorage.setItem('basket', JSON.stringify(basket) as any)
     }
   }
 })
