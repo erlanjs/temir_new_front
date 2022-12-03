@@ -11,7 +11,7 @@ interface SocialTypes {
 }
 
 interface SocialState {
-  messenger: SocialTypes;
+  socials: SocialTypes[];
   error: string;
   isLoading: boolean;
 }
@@ -19,26 +19,26 @@ interface SocialState {
 export const initialState: SocialState = {
   error: "",
   isLoading: false,
-  messenger: {},
+  socials: [],
 } as SocialState;
 
-export const MessengerReducer = createSlice({
+export const SocialsReducer = createSlice({
   name: "E-mail",
   initialState,
   reducers: {
-    MessengerFetching(state) {
+    SocialsFetching(state) {
       state.isLoading = true;
     },
-    MessengerSuccess(state, action: PayloadAction<SocialTypes>) {
+    SocialsSuccess(state, action: PayloadAction<SocialTypes[]>) {
       state.isLoading = false;
       state.error = "";
-      state.messenger = action.payload;
+      state.socials = action.payload;
     },
-    MessengerError(state, action: PayloadAction<any>) {
+    SocialsError(state, action: PayloadAction<any>) {
       state.isLoading = false;
       state.error = action.payload;
     },
   },
 });
 
-export default MessengerReducer.reducer;
+export default SocialsReducer.reducer;

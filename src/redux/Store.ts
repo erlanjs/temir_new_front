@@ -14,8 +14,8 @@ import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdmin
 import contactUsSlice from "../pages/home/reducerContactUs/contactUsSlice";
 import PhoneNumbersReducer from "../components/adminContact/reducer/ReducerPhoneNumbersAdmin";
 import EmailReducer from "../components/adminEmail/reducer/ReducerAdminEmail";
-import MessengersReducer from "../components/adminMessengers/reducer/ReducerMessenger";
-import MessengerReducer from "../components/adminMessengers/reducer/ReduceMessengerId";
+import SocialsReducer from "../components/adminSocial/reducer/ReducerSocials";
+import SocialReducer from "../components/adminSocial/reducer/ReduceSocialId";
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -31,8 +31,8 @@ const rootReducer = combineReducers({
   contactUsSlice,
   PhoneNumbersReducer,
   EmailReducer,
-  MessengersReducer,
-  MessengerReducer,
+  SocialsReducer,
+  SocialReducer,
 });
 
 export const setUpStore = () => {

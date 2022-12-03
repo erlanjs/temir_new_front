@@ -5,27 +5,26 @@ import DeleteSvgIcon from "../../assets/svg/DeleteSvgIcon";
 import PencilSvg from "../../assets/svg/PencilSvg";
 import API from "../api/Api";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { getActionMessengers } from "./reducer/ActionMessengers";
-import { getIdUserParams } from "../helper";
-import ModalMessenger from "./ModalMessenger";
-import ModalChangeMessenger from "./ModalChangeMessenger";
+import { getActionSocails } from "./reducer/ActionSocial";
+import ModalSocial from "./ModalSocial";
+import ModalChangeSocial from "./ModalChangeSocial";
 import "./style.scss";
 
-export default function AdminMessengers() {
+export default function AdminSocial() {
   const dispatch = useAppDispatch();
   const [modal, setModal] = useState(false);
   const [modalChange, setModalChange] = useState(false);
   const [messengerId, setMessengerId] = useState("");
-  const { social } = useAppSelector((state) => state.MessengersReducer);
+  const { socials } = useAppSelector((state) => state.SocialsReducer);
 
   useEffect(() => {
-    dispatch(getActionMessengers());
+    dispatch(getActionSocails());
   }, []);
 
   const deletedPost = (id: any) => {
     API.delete(`social/${id}`)
       .then(() => {
-        dispatch(getActionMessengers());
+        dispatch(getActionSocails());
       })
       .catch((error) => {
         alert("Errr");
@@ -34,7 +33,7 @@ export default function AdminMessengers() {
 
   return (
     <div className="mt-[31px] relative">
-      {social.map((items) => (
+      {socials.map((items) => (
         <div key={items.id} className="flex justify-between">
           <div className="text-black py-[8px] w-full bg-[#E7E0EC] mb-[22px] rounded-[4px] flex flex-col">
             <label className="pl-[16px] text-[12px] text-[#6750A4]">
@@ -75,8 +74,8 @@ export default function AdminMessengers() {
           <APlusSvg />
         </button>
       </div>
-      <ModalMessenger modal={modal} setModal={setModal} childern={""} />
-      <ModalChangeMessenger
+      <ModalSocial modal={modal} setModal={setModal} childern={""} />
+      <ModalChangeSocial
         postId={messengerId}
         modal={modalChange}
         setModal={setModalChange}

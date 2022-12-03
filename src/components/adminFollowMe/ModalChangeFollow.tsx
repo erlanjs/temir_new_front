@@ -14,18 +14,17 @@ interface IModalApp {
 }
 
 export default function ModalChangeMessnger({
-  childern,
   modal,
   setModal,
   postId,
 }: IModalApp) {
   const dispatch = useAppDispatch();
-  const { messenger } = useAppSelector((state) => state.MessengerReducer);
+  const { socialId } = useAppSelector((state) => state.SocialReducer);
   const [update, setUpdate] = useState({
-    title: `${messenger.title}`,
+    title: `${socialId.title}`,
     id: postId,
     user: getIdUserParams(),
-    url: `${messenger.url}`,
+    url: `${socialId.url}`,
   });
 
   const updatePost = () => {
@@ -66,7 +65,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={messenger.title}
+              defaultValue={socialId.title}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}
@@ -79,7 +78,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={messenger.url}
+              defaultValue={socialId.url}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}

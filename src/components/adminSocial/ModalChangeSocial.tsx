@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import API from "../api/Api";
 import { getIdUserParams } from "../helper";
-import { getActionMessengersId } from "./reducer/ActionMessengerId";
-import { getActionMessengers } from "./reducer/ActionMessengers";
+import { getActionSocailId } from "./reducer/ActionSocialId";
+import { getActionSocails } from "./reducer/ActionSocial";
 import "./style.scss";
 
 interface IModalApp {
@@ -20,20 +20,20 @@ export default function ModalChangeMessnger({
   postId,
 }: IModalApp) {
   const dispatch = useAppDispatch();
-  const { messenger } = useAppSelector((state) => state.MessengerReducer);
+  const { socialId } = useAppSelector((state) => state.SocialReducer);
   const [update, setUpdate] = useState({
-    title: `${messenger.title}`,
+    title: `${socialId.title}`,
     id: postId,
     user: getIdUserParams(),
-    url: `${messenger.url}`,
+    url: `${socialId.url}`,
   });
 
   const updatePost = () => {
     API.patch(`social/${postId}`, update)
       .then((res) => {
         alert("Success");
-        dispatch(getActionMessengersId(postId));
-        dispatch(getActionMessengers());
+        dispatch(getActionSocailId(postId));
+        dispatch(getActionSocails());
       })
       .catch((error) => {
         console.log(error);
@@ -42,8 +42,8 @@ export default function ModalChangeMessnger({
   };
 
   useEffect(() => {
-    dispatch(getActionMessengers());
-    dispatch(getActionMessengersId(postId));
+    dispatch(getActionSocails());
+    dispatch(getActionSocailId(postId));
   }, [postId]);
 
   return (
@@ -66,7 +66,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={messenger.title}
+              defaultValue={socialId.title}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}
@@ -79,7 +79,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={messenger.url}
+              defaultValue={socialId.url}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}

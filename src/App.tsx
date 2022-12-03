@@ -5,7 +5,6 @@ import Header from "./components/header/index";
 import Home from "./pages/home/home";
 import ProductPage from "./pages/productPage/productPage";
 import About from "./pages/about/about";
-import Contact from "./components/contact/contact";
 import Basket from "./pages/basket/basket";
 import Media from "./components/media/Media";
 import MediaCardImage from "./components/media/MediaCardImage";
@@ -13,14 +12,13 @@ import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import Footer from "./pages/home/Footer";
-// import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import AdminProduct from "./components/adminProduct/AdminProduct";
 import HeaderAdmin from "./components/ui/HeaderAdmin";
 import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
 import AdminEmail from "./components/adminEmail/AdminEmail";
-import AdminMessengers from "./components/adminMessengers/AdminMessenger";
 import AdminFollows from "./components/adminFollowMe/AdminFollow";
+import AdminSocial from "./components/adminSocial/AdminSocial";
 
 function App() {
   const listContact = [
@@ -43,8 +41,8 @@ function App() {
           link: "/follow",
         },
         {
-          name: "Messenger",
-          link: "/messenger",
+          name: "Social",
+          link: "/social",
         },
       ],
     },
@@ -106,12 +104,12 @@ function App() {
           }
         />
         <Route
-          path="/messenger"
+          path="/social"
           element={
             <HeaderAdmin
-              title="Messengers"
+              title="Social"
               arrayList={listContact}
-              children={<AdminMessengers />}
+              children={<AdminSocial />}
             />
           }
         />

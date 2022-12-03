@@ -6,7 +6,6 @@ import PencilSvg from "../../assets/svg/PencilSvg";
 import API from "../api/Api";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getActionFollows } from "./reducer/ActionFollows";
-import { getIdUserParams } from "../helper";
 import ModalFollow from "./ModalFollow";
 import ModalChangeFollow from "./ModalChangeFollow";
 import "./style.scss";
@@ -16,7 +15,7 @@ export default function AdminFollows() {
   const [modal, setModal] = useState(false);
   const [modalChange, setModalChange] = useState(false);
   const [messengerId, setMessengerId] = useState("");
-  const { social } = useAppSelector((state) => state.MessengersReducer);
+  const { socials } = useAppSelector((state) => state.SocialsReducer);
 
   useEffect(() => {
     dispatch(getActionFollows());
@@ -34,7 +33,7 @@ export default function AdminFollows() {
 
   return (
     <div className="mt-[31px] relative">
-      {social.map((items) => (
+      {socials.map((items) => (
         <div key={items.id} className="flex justify-between">
           <div className="text-black py-[8px] w-full bg-[#E7E0EC] mb-[22px] rounded-[4px] flex flex-col">
             <label className="pl-[16px] text-[12px] text-[#6750A4]">

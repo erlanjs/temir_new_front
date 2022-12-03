@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../hooks";
 
 import API from "../api/Api";
 import { getIdUserParams } from "../helper";
-import { getActionMessengers } from "./reducer/ActionMessengers";
+import { getActionSocails } from "./reducer/ActionSocial";
 import "./style.scss";
 
 interface IModalApp {
@@ -13,13 +13,13 @@ interface IModalApp {
   modal: any;
 }
 
-export default function ModalMessenger({ modal, setModal }: IModalApp) {
+export default function ModalSocial({ modal, setModal }: IModalApp) {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState(false);
-  const [nameMessenger, setNameMessenger] = useState({ id: "", label: "" });
-  const [messengers, setMessengers] = useState("");
+  const [nameSocial, setNameSocial] = useState({ id: "", label: "" });
+  const [socials, setSocials] = useState("");
   const [socialCategory, setSocailCategory] = useState([]);
-  const [descMessenger, setDescMessenger] = useState("");
+  const [descSocail, setDescSocail] = useState("");
 
   const showMessenger = (
     items: any,
@@ -27,36 +27,34 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
   ) => {
     switch (items.label) {
       case "whatsapp":
-        return setMessengers(`https://whatsapp/${event?.target?.value}`);
-      case "instagram":
-        return setMessengers(
-          `https://www.instagram.com/${event?.target?.value}/`
-        );
+        return setSocials(`https://wa.me/${event?.target?.value}`);
+      case "telegram":
+        return setSocials(`https://ta.me/${event?.target?.value}/`);
       default:
-        return setMessengers(`${event?.target?.value}`);
+        return setSocials(`${event?.target?.value}`);
     }
   };
 
   const postMessenger = () => {
     API.post("social/", {
       user: getIdUserParams(),
-      title: descMessenger,
-      url: messengers,
-      social: nameMessenger.id,
+      title: descSocail,
+      url: socials,
+      social: nameSocial.id,
     })
       .then((res) => {
         console.log(res);
         alert("success");
-        setDescMessenger("");
-        setMessengers("");
-        setNameMessenger({ id: "", label: "" });
-        dispatch(getActionMessengers());
+        setDescSocail("");
+        setSocials("");
+        setNameSocial({ id: "", label: "" });
+        dispatch(getActionSocails());
       })
       .catch((error) => {
         alert("Error");
-        setDescMessenger("");
-        setMessengers("");
-        setNameMessenger({ id: "", label: "" });
+        setDescSocail("");
+        setSocials("");
+        setNameSocial({ id: "", label: "" });
       });
   };
 
@@ -92,17 +90,17 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
               </label>
               <input
                 type="text"
-                value={nameMessenger.label}
+                value={nameSocial.label}
                 placeholder="Enter messenger name..."
                 className={`bg-transparent w-[100%] pl-[16px] max-h-auto font-[400]`}
                 onClick={() => setActive(active ? false : true)}
                 style={
-                  nameMessenger.label.length > 0
+                  nameSocial.label.length > 0
                     ? { color: "black" }
                     : { color: "rgba(125, 122, 133, 0.81)" }
                 }
                 onChange={(e) =>
-                  setNameMessenger({ ...nameMessenger, label: e.target.value })
+                  setNameSocial({ ...nameSocial, label: e.target.value })
                 }
               />
             </div>
@@ -114,7 +112,7 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
                 (item: any, index: Key | null | undefined) => (
                   <li
                     onClick={() =>
-                      setNameMessenger({
+                      setNameSocial({
                         id: item.id,
                         label: item.name.toLowerCase(),
                       })
@@ -135,22 +133,22 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
           </label>
           <input
             type="text"
-            value={descMessenger}
+            value={descSocail}
             placeholder="Enter messenger name..."
             style={{ resize: "none" }}
             className={`bg-transparent w-[100%] pl-[16px] max-h-auto`}
-            onChange={(e) => setDescMessenger(e.target.value)}
+            onChange={(e) => setDescSocail(e.target.value)}
           />
         </div>
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[17px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">URL: </label>
           <input
             type="text"
-            defaultValue={messengers}
+            defaultValue={socials}
             placeholder="Enter your nickname..."
             style={{ resize: "none" }}
             className={`bg-transparent w-[100%] pl-[16px] max-h-auto`}
-            onChange={(e) => showMessenger(nameMessenger, e)}
+            onChange={(e) => showMessenger(nameSocial, e)}
           />
         </div>
         <div className="w-full flex justify-center">
