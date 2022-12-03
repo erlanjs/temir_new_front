@@ -16,8 +16,38 @@ import Footer from "./pages/home/Footer";
 // import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import AdminProduct from "./components/adminProduct/AdminProduct";
+import HeaderAdmin from "./components/ui/HeaderAdmin";
+import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
+import AdminEmail from "./components/adminEmail/AdminEmail";
+import AdminMessengers from "./components/adminMessengers/AdminMessenger";
 
 function App() {
+  const listContact = [
+    {
+      dropdown: [
+        {
+          name: "Contact phone",
+          link: "/contact-phone",
+        },
+        {
+          name: "Connect",
+          link: "/connect",
+        },
+        {
+          name: "E-mails",
+          link: "/emailPage",
+        },
+        {
+          name: "Social medias",
+          link: "/social-medias",
+        },
+        {
+          name: "Messenger",
+          link: "/messenger",
+        },
+      ],
+    },
+  ];
   return (
     <>
       {/* <Header /> */}
@@ -54,7 +84,36 @@ function App() {
           }
         />
         <Route path="/company" element={<Company />} />
-        <Route path="/admin" element={<Contact />} />
+        <Route
+          path="/contact-phone"
+          element={
+            <HeaderAdmin
+              title="contact"
+              arrayList={listContact}
+              children={<ContactAdmin />}
+            />
+          }
+        />
+        <Route
+          path="/emailPage"
+          element={
+            <HeaderAdmin
+              title="Contact E-mails"
+              arrayList={listContact}
+              children={<AdminEmail />}
+            />
+          }
+        />
+        <Route
+          path="/messenger"
+          element={
+            <HeaderAdmin
+              title="Messengers"
+              arrayList={listContact}
+              children={<AdminMessengers />}
+            />
+          }
+        />
         <Route
           path="/image"
           element={<Media children={<MediaCardImage />} />}

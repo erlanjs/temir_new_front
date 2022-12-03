@@ -11,7 +11,11 @@ import ReducerBasket from "../pages/basket/ReducerBasket/BasketSlice";
 import ReducerMediaImage from "../components/adminMedia/reducer/ReducerMediaImage";
 import ReducerMediaVideo from "../components/adminMedia/reducer/ReucerMediaVideo";
 import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdminProduct";
-import contactUsSlice from '../pages/home/reducerContactUs/contactUsSlice';
+import contactUsSlice from "../pages/home/reducerContactUs/contactUsSlice";
+import PhoneNumbersReducer from "../components/adminContact/reducer/ReducerPhoneNumbersAdmin";
+import EmailReducer from "../components/adminEmail/reducer/ReducerAdminEmail";
+import MessengersReducer from "../components/adminMessengers/reducer/ReducerMessenger";
+import MessengerReducer from "../components/adminMessengers/reducer/ReduceMessengerId";
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -25,6 +29,10 @@ const rootReducer = combineReducers({
   ReducerMediaVideo,
   ReducerAdminProduct,
   contactUsSlice,
+  PhoneNumbersReducer,
+  EmailReducer,
+  MessengersReducer,
+  MessengerReducer,
 });
 
 export const setUpStore = () => {
