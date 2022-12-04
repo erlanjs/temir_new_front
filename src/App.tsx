@@ -20,6 +20,8 @@ import AdminEmail from "./components/adminEmail/AdminEmail";
 import AdminFollows from "./components/adminFollowMe/AdminFollow";
 import AdminSocial from "./components/adminSocial/AdminSocial";
 import Contact from "./pages/home/Contact";
+import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
+import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
 
 function App() {
   const listContact = [
@@ -131,6 +133,27 @@ function App() {
         <Route
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
+        />
+        {/* /// Product /// */}
+        <Route
+          path="/company-information/:id"
+          element={
+            <HeaderAdmin
+              title="Company information"
+              listCompany
+              children={<AdminCompanyInformation />}
+            />
+          }
+        />
+        <Route
+          path="/addcompany/"
+          element={
+            <HeaderAdmin
+              title="Add company"
+              listCompany
+              children={<AddedAdminCompany />}
+            />
+          }
         />
       </Routes>
       <Footer />

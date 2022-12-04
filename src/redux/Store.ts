@@ -11,14 +11,15 @@ import ReducerBasket from "../pages/basket/ReducerBasket/BasketSlice";
 import ReducerMediaImage from "../components/adminMedia/reducer/ReducerMediaImage";
 import ReducerMediaVideo from "../components/adminMedia/reducer/ReucerMediaVideo";
 import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdminProduct";
-import contactUsSlice from "../pages/home/reducerContactUs/contactUsSlice";
 import PhoneNumbersReducer from "../components/adminContact/reducer/ReducerPhoneNumbersAdmin";
 import EmailReducer from "../components/adminEmail/reducer/ReducerAdminEmail";
 import SocialsReducer from "../components/adminSocial/reducer/ReducerSocials";
 import SocialReducer from "../components/adminSocial/reducer/ReduceSocialId";
-import contactUsSlice from '../pages/home/reducerContactUs/contactUsSlice';
-import productSlice from '../pages/productPage/reducer/productSlice';
-import productDetailSlice from '../pages/productDetail/reducer/productDetailSlice';
+import contactUsSlice from "../pages/home/reducerContactUs/contactUsSlice";
+import productSlice from "../pages/productPage/reducer/productSlice";
+import productDetailSlice from "../pages/productDetail/reducer/productDetailSlice";
+import ReducerCompanies from "../components/adminCompanyInformation/reducer/ReducerCompanies";
+import ReducerCompanyInformation from "../components/adminCompanyInformation/reducer/ReducerCompanyInformation";
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   SocialReducer,
   productSlice,
   productDetailSlice,
+  ReducerCompanyInformation
 });
 
 export const setUpStore = () => {
