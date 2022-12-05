@@ -41,7 +41,6 @@ const CardsPremimum = () => {
     title: cardData.title,
     logo: imageUrl,
     img: EmptyCard,
-    // image: `${getImage()}`,
     price: "200",
     type: "",
     name: 'Premium Smart card',
@@ -60,22 +59,6 @@ const CardsPremimum = () => {
     })
   }
 
-  function getImage(){
-    return (
-      <div className="temir-card lg:w-[50%] h-full max-lg:w-full relative overflow-hidden">
-        <div className='absolute z-10 flex flex-col w-full my-2 top-[25%] items-center'>
-          {imageUrl ? <img src={imageUrl} width={300} className='temir-card--logo mx-auto h-[40px]'/> : ""}
-        </div>
-        <div className='absolute z-10 flex flex-col w-full bottom-[45%] items-center flex-nowrap'>
-          <h1
-            className='px-6 temir-card--title m-auto left-0 text-[40px] font-bold opacity-75 tracking-widest'>{cardData.title}</h1>
-        </div>
-        <div className=''>
-          <img src={mainCard} alt="" className="w-full"/>
-        </div>
-      </div>
-    )
-  }
 
 
   return (
@@ -101,7 +84,7 @@ const CardsPremimum = () => {
                       setProduct({...product, type: el.title, img: el.image})
                     }} className='relative flex items-center justify-center m-1'>
                       <img src={el.image} alt="" className="w-full cursor-pointer"/>
-                      <h2 className='absolute p-2 text-[17px] font-bold opacity-75 tracking-widest'>TEMIR</h2>
+                      <h2 className='absolute p-2 text-[16px] font-bold opacity-75 tracking-widest'>TEMIR</h2>
                     </div>
                     <p>{el.title}</p>
                   </div>
@@ -156,7 +139,18 @@ const CardsPremimum = () => {
             </div>
           </div>
 
-          {getImage()}
+          <div className="temir-card lg:w-[50%] h-full max-lg:w-full relative overflow-hidden">
+            <div className='absolute z-10 flex flex-col w-full my-2 top-[25%] items-center'>
+              {imageUrl ? <img src={imageUrl} width={300} className='temir-card--logo mx-auto h-[40px]'/> : ""}
+            </div>
+            <div className='absolute z-10 flex flex-col w-full bottom-[45%] items-center flex-nowrap'>
+              <h1
+                className='px-6 temir-card--title m-auto left-0 text-[40px] font-bold opacity-75 tracking-widest'>{cardData.title}</h1>
+            </div>
+            <div className=''>
+              <img src={mainCard} alt="" className="w-full"/>
+            </div>
+          </div>
 
         </div>
       </div>
