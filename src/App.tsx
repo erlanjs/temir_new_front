@@ -150,6 +150,9 @@ function App() {
             />
           }
         />
+          path="/image"
+          element={<Media children={<MediaCardImage />} />}
+        />
         <Route
           path="/user/:id/media"
           element={<Media children={<MediaCardImage />} />}
