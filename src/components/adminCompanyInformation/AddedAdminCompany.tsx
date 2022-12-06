@@ -11,7 +11,7 @@ export default function AddedAdminCompany() {
   const [active, setActive] = useState(true);
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const [postDataCompany, setDataCompany] = useState({
+  const [postDataCompany, setDataCompany] = useState<any>({
     image: "",
     user: getIdUserParams(),
     name: "",
@@ -19,7 +19,7 @@ export default function AddedAdminCompany() {
     description: "",
     visit_website_url: "",
     address_url: "",
-    is_main: "true",
+    is_main: false,
   });
 
   const uploadToClient = (event: any) => {
@@ -134,6 +134,15 @@ export default function AddedAdminCompany() {
           }
         />
       </div>
+      <input
+        type="checkbox"
+        onClick={() =>
+          setDataCompany({
+            ...postDataCompany,
+            is_main: true,
+          })
+        }
+      />
       <div className="flex justify-end">
         <button
           onClick={changeToServer}

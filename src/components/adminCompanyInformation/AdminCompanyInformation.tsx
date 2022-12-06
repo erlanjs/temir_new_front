@@ -13,11 +13,10 @@ export default function AdminCompanyInformation() {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState(true);
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const { details } = useAppSelector((state) => state.ReducerCompanyDetails);
-  const { company } = useAppSelector(
-    (state) => state.ReducerCompanyInformation
+  const { isLoading, details } = useAppSelector(
+    (state) => state.ReducerCompanyDetails
   );
-  const [changeData, setChangeData] = useState({
+  const [changeData, setChangeData] = useState<any>({
     id: id,
     image: `${details?.image}`,
     user: getIdUserParams(),
@@ -25,8 +24,8 @@ export default function AdminCompanyInformation() {
     activity: `${details?.activity}`,
     description: `${details?.description}`,
     visit_website_url: `${details?.visit_website_url}`,
-    address_url: `${details?.adress_url}`,
-    is_main: `${details?.is_main}`,
+    address_url: `${details?.address_url}`,
+    is_main: false,
   });
 
   const uploadToClient = (event: any) => {
@@ -66,7 +65,6 @@ export default function AdminCompanyInformation() {
     dispatch(getActionCompanyDetails(id));
     dispatch(getActionCompanyInformationAdmin(id));
   }, [id]);
-  console.log(changeData, "S");
 
   return (
     <div>
@@ -143,7 +141,7 @@ export default function AdminCompanyInformation() {
           <input
             type="text"
             disabled={active}
-            value={details.adress_url}
+            value={details.address_url}
             placeholder="Enter your text..."
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>
@@ -154,25 +152,30 @@ export default function AdminCompanyInformation() {
             }
           />
         </div>
+        <input
+          type="checkbox"
+          onClick={() =>
+            setChangeData({
+              ...changeData,
+              is_main: true,
+            })
+          }
+        />
         <div className="flex justify-end">
-          {active && (
-            <button
-              onClick={() => setActive(!active)}
-              style={{ background: "rgba(208, 188, 255, 0.08)" }}
-              className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
-            >
-              change
-            </button>
-          )}
-          {!active && (
-            <button
-              onClick={() => setActive(true)}
-              style={{ background: "rgba(208, 188, 255, 0.08)" }}
-              className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
-            >
-              save
-            </button>
-          )}
+          <button
+            onClick={() => setActive(!active)}
+            style={{ background: "rgba(208, 188, 255, 0.08)" }}
+            className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
+          >
+            change
+          </button>
+          <button
+            onClick={changeToServer}
+            style={{ background: "rgba(208, 188, 255, 0.08)" }}
+            className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
+          >
+            save
+          </button>
         </div>
       </div>
     </div>

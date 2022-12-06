@@ -1,13 +1,5 @@
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactFragment,
-  ReactPortal,
-  Key,
-  useState,
-  useEffect,
-} from "react";
-import { Link, NavLink, To, useNavigate } from "react-router-dom";
+import { Key, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import MenuList from "../../assets/svg/MenuList";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import API from "../api/Api";

@@ -8,7 +8,7 @@ interface CompanyAdminTypes {
   description: string;
   title: string;
   visit_website_url: string;
-  adress_url: string;
+  address_url: string;
   is_main: string;
 }
 

@@ -20,6 +20,8 @@ import productSlice from "../pages/productPage/reducer/productSlice";
 import productDetailSlice from "../pages/productDetail/reducer/productDetailSlice";
 import ReducerCompanies from "../components/adminCompanyInformation/reducer/ReducerCompanies";
 import ReducerCompanyInformation from "../components/adminCompanyInformation/reducer/ReducerCompanyInformation";
+import ReducerFollow from "../components/adminFollowMe/reducer/ReducerFollow";
+import ReducerFollows from "../components/adminFollowMe/reducer/ReducerFollows";
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -39,7 +41,9 @@ const rootReducer = combineReducers({
   SocialReducer,
   productSlice,
   productDetailSlice,
-  ReducerCompanyInformation
+  ReducerCompanyInformation,
+  ReducerFollow,
+  ReducerFollows,
 });
 
 export const setUpStore = () => {

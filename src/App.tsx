@@ -2,11 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import SignIn from "./components/signIn/SignIn";
 import Interface from "./pages/interface/Interface";
 import Header from "./components/header/index";
+import MediaAdminImage from "./components/adminMedia/MediaAdminImage";
+import MediaAdminVideo from "./components/adminMedia/MediaAdminVideo";
 import Home from "./pages/home/home";
 import ProductPage from "./pages/productPage/productPage";
 import About from "./pages/about/about";
 import Basket from "./pages/basket/basket";
 import Media from "./components/media/Media";
+import Products from "./components/products/products";
 import MediaCardImage from "./components/media/MediaCardImage";
 import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
@@ -22,6 +25,7 @@ import AdminSocial from "./components/adminSocial/AdminSocial";
 import Contact from "./pages/home/Contact";
 import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
 import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
+import MenuListAdmin from "./components/ui/MenuListAdmin";
 
 function App() {
   const listContact = [
@@ -30,10 +34,6 @@ function App() {
         {
           name: "Contact phone",
           link: "/contact-phone",
-        },
-        {
-          name: "Connect",
-          link: "/connect",
         },
         {
           name: "E-mails",
@@ -52,13 +52,22 @@ function App() {
   ];
   return (
     <>
+      <MenuListAdmin />
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductPage />} />
+        <Route path="/products" element={<AdminProduct />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/image"
+          element={<Media children={<MediaCardImage />} />}
+        />
+        <Route
+          path="/video"
+          element={<Media children={<MediaCardVideos />} />}
+        />
         {/* <Route
           path="/contact"
           element={
@@ -76,7 +85,6 @@ function App() {
             </Interface>
           }
         />
-        <Route path="/signin/:id" element={<SignIn />} />
         <Route
           path="/company"
           element={
@@ -85,12 +93,17 @@ function App() {
             </Interface>
           }
         />
+        <Route path="/signin/:id" element={<SignIn />} />
         <Route path="/company" element={<Company />} />
+        {/* //// admin /// */}
+        <Route path="/" element={<MediaAdminImage />} />
+        <Route path="/" element={<MediaAdminVideo />} />
+
         <Route
           path="/contact-phone"
           element={
             <HeaderAdmin
-              title="contact"
+              title="Contact phones"
               arrayList={listContact}
               children={<ContactAdmin />}
             />
@@ -126,14 +139,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/image"
-          element={<Media children={<MediaCardImage />} />}
-        />
-        <Route
-          path="/video"
-          element={<Media children={<MediaCardVideos />} />}
-        />
+
         {/* /// Product /// */}
         <Route
           path="/company-information/:id"
