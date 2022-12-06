@@ -26,6 +26,8 @@ import Contact from "./pages/home/Contact";
 import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
 import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
 import MenuListAdmin from "./components/ui/MenuListAdmin";
+import Contact from "./components/contact/contact";
+// import Contact from "./pages/home/Contact";
 
 function App() {
   const listContact = [
@@ -94,6 +96,8 @@ function App() {
           }
         />
         <Route path="/signin/:id" element={<SignIn />} />
+       
+        {/* <Route
         <Route path="/company" element={<Company />} />
         {/* //// admin /// */}
         <Route path="/" element={<MediaAdminImage />} />
@@ -161,8 +165,21 @@ function App() {
             />
           }
         />
+          path="/image"
+          element={<Media children={<MediaCardImage />} />}
+        /> */}
+
+        <Route
+          path="/user/:id/media"
+          element={<Media children={<MediaCardImage />} />}
+        />
+
+        {/* <Route
+          path="/video"
+          element={<Media children={<MediaCardVideos />} />}
+        /> */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
