@@ -68,10 +68,7 @@ function App() {
           path="/image"
           element={<Media children={<MediaCardImage />} />}
         />
-        <Route
-          path="/video"
-          element={<Media children={<MediaCardVideos />} />}
-        />
+
         <Route path="/basket" element={<Basket />} />
         <Route
           path="/user/:id"
@@ -82,7 +79,7 @@ function App() {
           }
         />
         <Route
-          path="/company"
+          path="/user/:id/company"
           element={
             <Interface>
               <Company />
@@ -178,13 +175,49 @@ function App() {
             <HeaderLisProducts title="Products" children={<AdminProduct />} />
           }
         />
+        <Route
+          path="/addcompany/"
+          element={
+            <HeaderAdmin
+              title="Add company"
+              // listCompany
+              children={<AddedAdminCompany />}
+            />
+          }
+        />
+
+        <Route
+          path="/user/:id/media"
+          element={
+            <Interface>
+              <Media children={<MediaCardImage />} />
+            </Interface>
+          }
+        />
+
+        <Route
+          path="/user/:id/signin"
+          element={
+            <Interface>
+              <SignIn />
+            </Interface>
+          }
+        />
+
+
+        <Route
+          path="/video"
+          element={<Media children={<MediaCardVideos />} />}
+        />
+        {/* <Route
+          path="/bank-details"
 
         <Route
           path="/admin-media"
           element={
             <HeaderLisProducts title="Products" children={<MediaAdmin />} />
           }
-        />
+        /> */}
       </Routes>
     </>
   );
