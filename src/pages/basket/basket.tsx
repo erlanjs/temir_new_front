@@ -10,7 +10,6 @@ import BaskTitle from './BaskTitle'
 
 const Basket: FC = () => {
   const navigate = useNavigate()
-  const { basket } = useAppSelector((s) => s.ReducerBasket)
   const ClassesBtn =
     'font-[Jura] text-[30px] bg-[#0B0B0B] shadow-[-10.93px_-8.94274px_20.8664px_rgba(72,72,72,0.25),5.96183px_6.95546px_20.8664px_#000000] rounded-[5px] py-2 px-8 hover:scale-110 hover:bg-transparent transition duration-500 ease-in-out'
   const returnProduct = () => {
@@ -19,10 +18,23 @@ const Basket: FC = () => {
   const proceedCheckout = () => {
     navigate('/checkout')
   }
+    const { basket } = useAppSelector((s) => s.ReducerBasket)
 
-  let totalPrice = basket.reduce(
-    (a: any, b: any) => +a.price * a.quantity + +b.price * b.quantity
-  )
+
+  const getTotal = (arr: any) => {
+    let result = 0
+    for (const el of arr) {
+      result += el.price * el.quantity
+    }
+    return result
+  }
+
+//   let totalPrice =
+//     basket.length > 1
+//       ? basket.reduce(
+//           (a: any, b: any) => +a.price * a.quantity + +b.price * b.quantity
+//         )
+//       : basket[0].price * basket[0].quantity
 
   return (
     <section className="pt-16">
@@ -44,7 +56,7 @@ const Basket: FC = () => {
                   <BasketEmpty />
                 )}
               </div>
-              {basket.length > 0 && <BasketTotal totalPrice={totalPrice} />}
+              {basket.length > 0 && <BasketTotal />}
             </div>
           </div>
           <div className="flex justify-center items-center py-3 mt-1">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import { HiUpload } from 'react-icons/hi'
 
 //local
@@ -8,7 +8,7 @@ import Card5 from '../../../assets/img/card5.svg'
 import EmptyCard from '../../../assets/img/empty-card.svg'
 import { useAppDispatch } from '../../../hooks'
 
-const CardsPremimum = () => {
+const CardsPremimum: FC = () => {
   const classesText =
     'font-[Arial] font-[900] uppercase text-white text-[30px] leading-[42px]'
   const classesBefore =

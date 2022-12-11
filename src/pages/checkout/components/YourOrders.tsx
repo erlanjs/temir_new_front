@@ -1,15 +1,13 @@
 import React, { FC } from 'react'
 import { useAppSelector } from '../../../hooks'
+import { getTotal } from '../../basket/ReducerBasket/ActionBasket'
+
 interface IProps {
   register: any
 }
 
 const YourOrders: FC<IProps> = ({ register }) => {
   const { basket } = useAppSelector((state) => state.ReducerBasket)
-  let totalPrice = basket.reduce(
-    (a: any, b: any) => +a.price * a.quantity + +b.price * b.quantity
-  )
-
   return (
     <div className="bg-transparent pt-6">
       <h1 className="font-[Arial] font-[900] text-[30px] max-md:text-[24px] text-center">
@@ -49,7 +47,7 @@ const YourOrders: FC<IProps> = ({ register }) => {
         </div>
         <div className="font-[Arial] text-[30px] max-md:text-[24px] flex justify-between w-[90%] mx-auto px-4 py-5">
           <h3>Total:</h3>
-          <h3 className="uppercaes">{totalPrice} AED</h3>
+          <h3 className="uppercaes">{getTotal(basket)} AED</h3>
         </div>
       </div>
     </div>
