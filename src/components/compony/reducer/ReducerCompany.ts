@@ -7,7 +7,7 @@ interface CompanyTypes {
   activity: string;
   description: string;
   visit_website_url: string;
-  adress_url: string;
+  address_url: string;
   is_main: boolean;
   image: string;
 }

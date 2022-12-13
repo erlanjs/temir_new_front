@@ -15,11 +15,13 @@ const AboutTemirStore: FC = () => {
             Temir card-new generation smart business card with more advanced
             options.
           </p>
-          <img
-            src={TemirStoreImage}
-            alt="Temir_Store"
-            className="md:w-[514px] max-md:w-[85%] mx-auto my-2"
-          />
+          <div>
+            <img
+              src={TemirStoreImage}
+              alt="Temir_Store"
+              className="md:w-[514px] max-md:w-[85%] mx-auto my-2"
+            />
+          </div>
           <p className="text-[24px] pt-2 text-center w-[55%] max-xl:w-[60%] max-lg:w-[70%] max-md:w-[90%] max-sm:text-[20px] max-sm:text-justify max-sm:w-full mx-auto">
             You can add your contact details, social media accounts, pictures
             and more other details and you can update at any time.

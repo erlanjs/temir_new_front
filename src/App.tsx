@@ -2,11 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import SignIn from "./components/signIn/SignIn";
 import Interface from "./pages/interface/Interface";
 import Header from "./components/header/index";
+import MediaAdminImage from "./components/adminMedia/MediaAdminImage";
+import MediaAdminVideo from "./components/adminMedia/MediaAdminVideo";
 import Home from "./pages/home/home";
 import ProductPage from "./pages/productPage/productPage";
 import About from "./pages/about/about";
 import Basket from "./pages/basket/basket";
 import Media from "./components/media/Media";
+import Products from "./components/products/products";
 import MediaCardImage from "./components/media/MediaCardImage";
 import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
@@ -19,8 +22,15 @@ import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
 import AdminEmail from "./components/adminEmail/AdminEmail";
 import AdminFollows from "./components/adminFollowMe/AdminFollow";
 import AdminSocial from "./components/adminSocial/AdminSocial";
-import Contact from "./components/contact/contact";
+import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
+import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
+import MenuListAdmin from "./components/ui/HeaderListProducts";
+// import Contact from "./components/contact/contact";
 // import Contact from "./pages/home/Contact";
+import Contact from "./components/contact/contact";
+import AdminBanks from "./components/adminBanks/AdminBanks";
+import HeaderLisProducts from "./components/ui/HeaderListProducts";
+import MediaAdmin from "./components/adminMedia/MediaAdmin";
 
 function App() {
   const listContact = [
@@ -29,10 +39,6 @@ function App() {
         {
           name: "Contact phone",
           link: "/contact-phone",
-        },
-        {
-          name: "Connect",
-          link: "/connect",
         },
         {
           name: "E-mails",
@@ -52,20 +58,18 @@ function App() {
   return (
     <>
        <Header />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
-        {/* <Route
-          path="/contact"
-          element={
-            <Interface>
-              <Contact />
-            </Interface>
-          }
-        /> */}
+        <Route
+          path="/image"
+          element={<Media children={<MediaCardImage />} />}
+        />
+
         <Route path="/basket" element={<Basket />} />
         <Route
           path="/user/:id"
@@ -75,24 +79,60 @@ function App() {
             </Interface>
           }
         />
-        <Route path="/signin/:id" element={<SignIn />} />
         <Route
-          path="/company"
+          path="/user/:id/company"
           element={
             <Interface>
               <Company />
             </Interface>
           }
         />
+        <Route path="/signin/:id" element={<SignIn />} />
 
-        
-        {/* <Route
-        <Route path="/company" element={<Company />} />
+        {/* /// Product /// */}
         <Route
-          path="/contact-phone"
+          path="/company-information/:id"
+          element={
+            <HeaderLisProducts
+              title="Company information"
+              listActive
+              children={<AdminCompanyInformation />}
+            />
+          }
+        />
+        <Route
+          path="/addcompany/"
+          element={
+            <HeaderLisProducts
+            listActive
+              title="Add company"
+              children={<AddedAdminCompany />}
+            />
+          }
+        />
+
+        <Route
+          path="/user/:id/media"
+          element={<Media children={<MediaCardImage />} />}
+        />
+        <Route
+          path="/bank-details"
+          element={
+            <HeaderLisProducts
+            listActive
+              title="Bank details/cards"
+              children={<AdminBanks />}
+            />
+          }
+        />
+
+        {/* //Contact */}
+
+        <Route
+          path="/admin-contacts"
           element={
             <HeaderAdmin
-              title="contact"
+              title="Contact phones"
               arrayList={listContact}
               children={<ContactAdmin />}
             />
@@ -128,24 +168,58 @@ function App() {
             />
           }
         />
+
+        {/* Product */}
         <Route
-          path="/image"
-          element={<Media children={<MediaCardImage />} />}
-        /> */}
+          path="/admin-product"
+          element={
+            <HeaderLisProducts title="Products" children={<AdminProduct />} />
+          }
+        />
+        <Route
+          path="/addcompany/"
+          element={
+            <HeaderAdmin
+              title="Add company"
+              // listCompany
+              children={<AddedAdminCompany />}
+            />
+          }
+        />
 
         <Route
           path="/user/:id/media"
-          element={<Media children={<MediaCardImage />} />}
+          element={
+            <Interface>
+              <Media children={<MediaCardImage />} />
+            </Interface>
+          }
         />
 
-        {/* <Route
+        <Route
+          path="/user/:id/signin"
+          element={
+            <Interface>
+              <SignIn />
+            </Interface>
+          }
+        />
+
+
+        <Route
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
-        /> */}
+        />
+        {/* <Route
+          path="/bank-details"
 
-        
+        <Route
+          path="/admin-media"
+          element={
+            <HeaderLisProducts title="Products" children={<MediaAdmin />} />
+          }
+        /> */}
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
+import { useNavigate } from "react-router-dom";
 import APlusSvg from "../../assets/svg/AplusSvg";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -7,7 +8,6 @@ import API from "../api/Api";
 import { getActionVideo } from "../media/reducer/ActionVideo";
 import ModalAdminImage from "./modal/ModalAdminImage";
 import ModalUpdateImage from "./modal/ModalUpdateImage";
-import { getActionMediaVideo } from "./reducer/ActionMediaVideo";
 
 export default function MediaAdminVideo() {
   const dispatch = useAppDispatch();
@@ -31,10 +31,8 @@ export default function MediaAdminVideo() {
     dispatch(getActionVideo());
   }, []);
 
-  console.log(video);
-
   return (
-    <div className="max-w-[400px] mx-auto">
+    <div className="max-w-[500px] mx-auto pb-[77px]">
       <div
         className={`flex justify-center items-end relative  ${
           video.length <= 1 && "min-h-[70vh]"
