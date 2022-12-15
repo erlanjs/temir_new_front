@@ -31,6 +31,7 @@ import Contact from "./components/contact/contact";
 import AdminBanks from "./components/adminBanks/AdminBanks";
 import HeaderLisProducts from "./components/ui/HeaderListProducts";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
+import ContactUs from "./pages/contactUs/contactUs";
 
 function App() {
   const listContact = [
@@ -62,6 +63,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
         <Route
@@ -103,7 +105,7 @@ function App() {
           path="/addcompany/"
           element={
             <HeaderLisProducts
-            listActive
+              listActive
               title="Add company"
               children={<AddedAdminCompany />}
             />
@@ -118,7 +120,7 @@ function App() {
           path="/bank-details"
           element={
             <HeaderLisProducts
-            listActive
+              listActive
               title="Bank details/cards"
               children={<AdminBanks />}
             />
@@ -204,7 +206,6 @@ function App() {
           }
         />
 
-
         <Route
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
@@ -220,7 +221,7 @@ function App() {
         /> */}
       </Routes>
     </>
-  );
+  )
 }
 
 export default App;
