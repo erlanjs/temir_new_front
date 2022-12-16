@@ -31,6 +31,8 @@ import Contact from "./components/contact/contact";
 import AdminBanks from "./components/adminBanks/AdminBanks";
 import HeaderLisProducts from "./components/ui/HeaderListProducts";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
+import ContactUs from "./pages/contactUs/contactUs";
+import Share from "./components/share/Share";
 
 function App() {
   const listContact = [
@@ -59,16 +61,15 @@ function App() {
     <>
        <Header />
       <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/image"
-          element={<Media children={<MediaCardImage />} />}
-        />
+        <Route path="/image" element={<Media />} />
 
         <Route path="/basket" element={<Basket />} />
         <Route
@@ -104,7 +105,7 @@ function App() {
           path="/addcompany/"
           element={
             <HeaderLisProducts
-            listActive
+              listActive
               title="Add company"
               children={<AddedAdminCompany />}
             />
@@ -112,14 +113,26 @@ function App() {
         />
 
         <Route
-          path="/user/:id/media"
-          element={<Media children={<MediaCardImage />} />}
+          path="/user/:id/gallery"
+          element={
+            <Interface>
+              <Media />
+            </Interface>
+          }
+        />
+        <Route
+          path="/user/:id/share"
+          element={
+            <Interface>
+              <Share />
+            </Interface>
+          }
         />
         <Route
           path="/bank-details"
           element={
             <HeaderLisProducts
-            listActive
+              listActive
               title="Bank details/cards"
               children={<AdminBanks />}
             />
@@ -188,10 +201,10 @@ function App() {
         />
 
         <Route
-          path="/user/:id/media"
+          path="/user/:id/gallery"
           element={
             <Interface>
-              <Media children={<MediaCardImage />} />
+              <Media />
             </Interface>
           }
         />
@@ -205,20 +218,14 @@ function App() {
           }
         />
 
-
-        <Route
-          path="/video"
-          element={<Media children={<MediaCardVideos />} />}
-        />
-        {/* <Route
-          path="/bank-details"
+        <Route path="/video" element={<Media />} />
 
         <Route
           path="/admin-media"
           element={
             <HeaderLisProducts title="Products" children={<MediaAdmin />} />
           }
-        /> */}
+        />
       </Routes>
     </>
   );

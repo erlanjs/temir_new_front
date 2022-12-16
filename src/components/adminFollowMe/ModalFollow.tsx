@@ -1,4 +1,4 @@
-import { Key, useEffect, useState } from "react";
+import { Key, useState } from "react";
 
 import { useAppDispatch } from "../../hooks";
 import API from "../api/Api";
@@ -61,8 +61,6 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
         setNameMessenger({ id: "", label: "" });
       });
   };
-
-  console.log(messengers, "ME");
 
   return (
     <div

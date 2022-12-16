@@ -4,7 +4,7 @@ import APlusSvg from "../../assets/svg/AplusSvg";
 import { getActionImage } from "../media/reducer/ActionImage";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import API from "../api/Api";
-import ModalAdminImage from "./modal/ModalAdminImage";
+import ModalAdminImage from "./modal/ModalAdminVideo";
 import ModalUpdateImage from "./modal/ModalUpdateImage";
 
 export default function MediaAdminImage() {
@@ -12,7 +12,6 @@ export default function MediaAdminImage() {
   const [update, setUpdate] = useState(false);
   const [imageId, setImageId] = useState("");
   const { photos } = useAppSelector((state) => state.ReducerImage);
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getActionImage());
