@@ -155,7 +155,7 @@ export default function AddedAdminCompany() {
           } rounded-[16px] mb-[13px] flex flex-col justify-center items-center `}
           onClick={() => {
             setShowModal(true);
-            setShowModalTitle("Select image");
+            setShowModalTitle("Change image");
           }}
         >
           {cropData && (

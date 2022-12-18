@@ -28,12 +28,12 @@ export default function HeaderLisProducts({
       svg: (
         <AdminContactIcon
           fill={
-            window.location.pathname === "/admin-contacts" ? "red" : "#575757"
+            window.location.pathname === "/contact-phone" ? "red" : "#575757"
           }
         />
       ),
       list: "Contacts",
-      link: "/admin-contacts",
+      link: "/contact-phone",
     },
     {
       svg: (

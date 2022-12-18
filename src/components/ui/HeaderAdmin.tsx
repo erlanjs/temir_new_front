@@ -27,7 +27,7 @@ export default function HeaderAdmin({
     {
       svg: <AdminContactIcon />,
       list: "Contacts",
-      link: "/admin-contacts",
+      link: "/contact-phone",
     },
     {
       svg: <MediaAdminIcon />,
