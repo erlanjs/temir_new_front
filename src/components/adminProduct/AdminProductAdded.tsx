@@ -19,7 +19,6 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
 
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const dispatch = useAppDispatch();
-  const { product } = useAppSelector((state) => state.ProductAdminReducer);
   const [postDataProduct, setPostDataProduct] = useState({
     user: getIdUserParams(),
     title: "",

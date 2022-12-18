@@ -6,6 +6,8 @@ import API from "../api/Api";
 import { getActionProductAdmin } from "./reducer/ActionProductAdmin";
 import { getIdUserParams } from "../helper";
 import AdminProductAdded from "./AdminProductAdded";
+import Loading from "../loading/Loading";
+import { ProductAdminReducer } from "./reducer/ReducerAdminProduct";
 
 export default function AdminProduct() {
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -13,7 +15,9 @@ export default function AdminProduct() {
   const [productId, setProductId] = useState("");
   const [btnDefinition, setBtnDefinition] = useState("");
   const [active, setActive] = useState(true);
-  const { products } = useAppSelector((state) => state.ReducerProduct);
+  const { isLoading, products } = useAppSelector(
+    (state) => state.ReducerProduct
+  );
   const { product } = useAppSelector((state) => state.ProductAdminReducer);
   const [postDataProduct, setPostDataProduct] = useState({
     user: getIdUserParams(),
@@ -92,11 +96,13 @@ export default function AdminProduct() {
   };
 
   useEffect(() => {
+    dispatch(ProductAdminReducer.actions.ProductAdminFetching);
     dispatch(getActionProduct());
     dispatch(getActionProductAdmin(productId));
   }, []);
 
   console.log(product.id === createImageSecondary.id, "IDP");
+  console.log(isLoading, "lo");
 
   return (
     <div className="pt-[28px] pb-[57px]">
@@ -152,7 +158,10 @@ export default function AdminProduct() {
                 placeholder="Enter your text..."
                 className="bg-transparent w-[100%] pl-[16px]"
                 onChange={(e) =>
-                  setChangeProduct({ ...changeProduct, title: e.target.value })
+                  setChangeProduct({
+                    ...changeProduct,
+                    title: e.target.value,
+                  })
                 }
               />
             </div>
