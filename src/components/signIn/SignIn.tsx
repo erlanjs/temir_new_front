@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -17,6 +17,7 @@ export default function SignIn() {
     register,
     formState: { errors },
   } = useForm<ISignIn>();
+  const [eye, setEye] = useState(false);
   const { id } = useParams();
   localStorage.setItem("userId", JSON.stringify(id));
   const navigation = useNavigate();
@@ -46,7 +47,7 @@ export default function SignIn() {
     <div className="max-w-[419px] mx-auto ">
       <form onSubmit={sigIn}>
         <input
-          type="password"
+          type={eye ? `text` : `password`}
           placeholder="Enter password"
           {...register("password", { required: true })}
           name="password"
@@ -61,6 +62,7 @@ export default function SignIn() {
         >
           Forgot password ?
         </p>
+        <button onClick={() => setEye(!eye)}>Pas</button>
         <div className="flex justify-center">
           <button
             type="submit"
