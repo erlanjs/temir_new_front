@@ -18,6 +18,7 @@ export default function SignIn() {
     formState: { errors },
   } = useForm<ISignIn>();
   const { id } = useParams();
+  localStorage.setItem("userId", JSON.stringify(id));
   const navigation = useNavigate();
   const [modal, setModal] = useState<boolean>(false);
   const [errorValidate, setErrorValidate] = useState<boolean>(false);
@@ -73,7 +74,7 @@ export default function SignIn() {
         <button
           className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[45px]"
           onClick={() =>
-            navigation  ("/user/dc18f3e4-72db-4983-b0f4-674660c1452e")
+            navigation("/user/dc18f3e4-72db-4983-b0f4-674660c1452e")
           }
         >
           Back
