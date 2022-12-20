@@ -33,7 +33,7 @@ export default function SignIn() {
         console.log(res);
         localStorage.setItem("accessToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
-        navigation("/addcompany");
+        navigation("/welcome-to-admin");
       })
       .catch((error) => {
         console.log(error);
@@ -75,6 +75,7 @@ export default function SignIn() {
         >
           Forgot password ?
         </p>
+        <button onClick={() => setEye(!eye)}>Pas</button>
         <div className="flex justify-center">
           <button
             type="submit"

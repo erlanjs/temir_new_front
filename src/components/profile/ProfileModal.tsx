@@ -143,6 +143,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
     data.append("avatar", "");
 
     API.patch(`user-update/${getIdUserParams()}`, data)
+
       .then(({ data }) => {
         console.log(data);
         alert("Success");
@@ -187,7 +188,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         dispatch(getUser.actions.getUserError(error));
       });
   }, []);
-
+  
   return (
     <div
       className={`modal ${
@@ -261,6 +262,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         </div>
 
         <div className="text-black w-full pb-[8px] bg-[#E7E0EC] rounded-[4px]">
+
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Position:
           </label>

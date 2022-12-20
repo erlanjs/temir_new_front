@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import SignIn from "./components/signIn/SignIn";
 import Interface from "./pages/interface/Interface";
 import Home from "./pages/home/home";
@@ -28,61 +28,63 @@ import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import Products from "./components/products/products";
+import AdminToWelcome from "./components/signIn/AdminToWelcome/AdminToWelcome";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 function App() {
-  const listContact = [
-    {
-      dropdown: [
+    const listContact = [
         {
-          name: "Contact phone",
-          link: "/contact-phone",
+            dropdown: [
+                {
+                    name: "Contact phone",
+                    link: "/contact-phone",
+                },
+                {
+                    name: "E-mails",
+                    link: "/emailPage",
+                },
+                {
+                    name: "Follow me",
+                    link: "/follow",
+                },
+                {
+                    name: "Social",
+                    link: "/social",
+                },
+            ],
         },
-        {
-          name: "E-mails",
-          link: "/emailPage",
-        },
-        {
-          name: "Follow me",
-          link: "/follow",
-        },
-        {
-          name: "Social",
-          link: "/social",
-        },
-      ],
-    },
-  ];
-  return (
-    <>
-      {/* <Header /> */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/image" element={<Media />} />
-
-        <Route path="/basket" element={<Basket />} />
-        <Route
-          path="/user/:id"
-          element={
-            <Interface>
-              <Contact />
-            </Interface>
-          }
-        />
-        <Route
-          path="/user/:id/company"
-          element={
-            <Interface>
-              <Company />
-            </Interface>
-          }
-        />
-        <Route path="/signin/:id" element={<SignIn />} />
-        <Route path="/resetPassword/*" element={<ResetPassword />} />
+    ];
+    return (
+        <>
+            {/* <Header /> */}
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/products" element={<ProductPage/>}/>
+                <Route path="/checkout" element={<CheckoutPage/>}/>
+                <Route path="/contact" element={<ContactUs/>}/>
+                <Route path="/productDetail/:idCard" element={<ProductDetailPage/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/image" element={<Media/>}/>
+                <Route path="/welcome-to-admin" element={<AdminToWelcome/>}/>
+                <Route path="/basket" element={<Basket/>}/>
+                <Route
+                    path="/user/:id"
+                    element={
+                        <Interface>
+                            <Contact/>
+                        </Interface>
+                    }
+                />
+                <Route
+                    path="/user/:id/company"
+                    element={
+                        <Interface>
+                            <Company/>
+                        </Interface>
+                    }
+                />
+                <Route path="/signin/:id" element={<SignIn/>}/>
+                <Route path="/resetPassword/*" element={<ResetPassword/>}/>
 
         {/* /// Product /// */}
         <Route
@@ -144,97 +146,163 @@ function App() {
             />
           }
         />
+                {/* /// Product /// */}
+                <Route
+                    path="/company-information/:id"
+                    element={
+                        <HeaderLisProducts
+                            title="Company information"
+                            listActive
+                            children={<AdminCompanyInformation/>}
+                        />
+                    }
+                />
+                <Route
+                    path="/addcompany/"
+                    element={
+                        <HeaderLisProducts
+                            listActive
+                            title="Add company"
+                            children={<AddedAdminCompany/>}
+                        />
+                    }
+                />
+                <Route
+                    path="/profile/"
+                    element={
+                        <HeaderLisProducts
+                            listActive
+                            title="Profile"
+                            children={<Profile/>}
+                        />
+                    }
+                />
 
-        {/* //Contact */}
+                <Route
+                    path="/user/:id/gallery"
+                    element={
+                        <Interface>
+                            <Media/>
+                        </Interface>
+                    }
+                />
+                <Route
+                    path="/user/:id/inventary"
+                    element={
+                        <Interface>
+                            <ProductsAdmin/>
+                        </Interface>
+                    }
+                />
+                <Route
+                    path="/user/:id/share"
+                    element={
+                        <Interface>
+                            <Share/>
+                        </Interface>
+                    }
+                />
+                <Route
+                    path="/bank-details"
+                    element={
+                        <HeaderLisProducts
+                            listActive
+                            title="Bank details/cards"
+                            children={<AdminBanks/>}
+                        />
+                    }
+                />
 
-        <Route
-          path="/contact-phone"
-          element={
-            <HeaderAdmin
-              title="Contact phones"
-              arrayList={listContact}
-              children={<ContactAdmin />}
-            />
-          }
-        />
-        <Route
-          path="/emailPage"
-          element={
-            <HeaderAdmin
-              title="Contact E-mails"
-              arrayList={listContact}
-              children={<AdminEmail />}
-            />
-          }
-        />
-        <Route
-          path="/social"
-          element={
-            <HeaderAdmin
-              title="Social"
-              arrayList={listContact}
-              children={<AdminSocial />}
-            />
-          }
-        />
-        <Route
-          path="/follow"
-          element={
-            <HeaderAdmin
-              title="Follow me"
-              arrayList={listContact}
-              children={<AdminFollows />}
-            />
-          }
-        />
+                {/* //Contact */}
 
-        {/* Product */}
-        <Route
-          path="/admin-product"
-          element={
-            <HeaderLisProducts title="Products" children={<AdminProduct />} />
-          }
-        />
-        <Route
-          path="/addcompany/"
-          element={
-            <HeaderAdmin
-              title="Add company"
-              // listCompany
-              children={<AddedAdminCompany />}
-            />
-          }
-        />
+                <Route
+                    path="/contact-phone"
+                    element={
+                        <HeaderAdmin
+                            title="Contact phones"
+                            arrayList={listContact}
+                            children={<ContactAdmin/>}
+                        />
+                    }
+                />
+                <Route
+                    path="/emailPage"
+                    element={
+                        <HeaderAdmin
+                            title="Contact E-mails"
+                            arrayList={listContact}
+                            children={<AdminEmail/>}
+                        />
+                    }
+                />
+                <Route
+                    path="/social"
+                    element={
+                        <HeaderAdmin
+                            title="Social"
+                            arrayList={listContact}
+                            children={<AdminSocial/>}
+                        />
+                    }
+                />
+                <Route
+                    path="/follow"
+                    element={
+                        <HeaderAdmin
+                            title="Follow me"
+                            arrayList={listContact}
+                            children={<AdminFollows/>}
+                        />
+                    }
+                />
 
-        <Route
-          path="/user/:id/gallery"
-          element={
-            <Interface>
-              <Media />
-            </Interface>
-          }
-        />
+                {/* Product */}
+                <Route
+                    path="/admin-product"
+                    element={
+                        <HeaderLisProducts title="Products" children={<AdminProduct/>}/>
+                    }
+                />
+                <Route
+                    path="/addcompany/"
+                    element={
+                        <HeaderAdmin
+                            title="Add company"
+                            // listCompany
+                            children={<AddedAdminCompany/>}
+                        />
+                    }
+                />
 
-        <Route
-          path="/user/:id/signin"
-          element={
-            <Interface>
-              <SignIn />
-            </Interface>
-          }
-        />
+                <Route
+                    path="/user/:id/gallery"
+                    element={
+                        <Interface>
+                            <Media/>
+                        </Interface>
+                    }
+                />
 
-        <Route path="/video" element={<Media />} />
+                <Route
+                    path="/user/:id/signin"
+                    element={
+                        <Interface>
+                            <SignIn/>
+                        </Interface>
+                    }
+                />
 
-        <Route
-          path="/admin-media"
-          element={
-            <HeaderLisProducts title="Products" children={<MediaAdmin />} />
-          }
-        />
-      </Routes>
-    </>
-  );
+                <Route path="/video" element={<Media/>}/>
+
+                <Route
+                    path="/admin-media"
+                    element={
+                        <HeaderLisProducts title="Products" children={<MediaAdmin/>}/>
+                    }
+                />
+            </Routes>
+        </>
+    );
 }
 
 export default App;

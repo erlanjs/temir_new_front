@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getActionProduct } from "./reducer/ActionProduct";
+import {useNavigate} from "react-router-dom";
 
 const Products = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const { products } = useAppSelector((state) => state.ReducerProduct);
 
   useEffect(() => {
@@ -32,6 +34,7 @@ const Products = () => {
               {items.visit_website_url_name}
             </button>
           )}
+          <button onClick={()=> navigate(items.visit_website_url_url)}>items.visit_website_url_name</button>
         </div>
       ))}
     </div>
