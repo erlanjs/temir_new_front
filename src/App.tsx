@@ -29,6 +29,7 @@ import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
 import AdminToWelcome from "./components/signIn/AdminToWelcome/AdminToWelcome";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import Header from "./components/header";
 
 function App() {
     const listContact = [
@@ -55,7 +56,7 @@ function App() {
     ];
     return (
         <>
-            {/* <Header /> */}
+            <Header />
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/products" element={<ProductPage/>}/>
