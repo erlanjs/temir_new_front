@@ -24,10 +24,10 @@ import HeaderLisProducts from "./components/ui/HeaderListProducts";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import ContactUs from "./pages/contactUs/contactUs";
 import Share from "./components/share/Share";
-import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import Products from "./components/products/products";
 
 function App() {
   const listContact = [
@@ -107,13 +107,7 @@ function App() {
         />
         <Route
           path="/profile/"
-          element={
-            <HeaderLisProducts
-              listActive
-              title="Profile"
-              children={<Profile />}
-            />
-          }
+          element={<HeaderLisProducts title="Profile" children={<Profile />} />}
         />
 
         <Route
@@ -128,7 +122,7 @@ function App() {
           path="/user/:id/inventary"
           element={
             <Interface>
-              <ProductsAdmin />
+              <Products />
             </Interface>
           }
         />
