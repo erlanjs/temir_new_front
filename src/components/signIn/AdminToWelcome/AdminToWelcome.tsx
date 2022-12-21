@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import logo from "../../../assets/img/logo.svg";
 import gsap from "gsap";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const percent = "60%";
-const navigate = useNavigate();
+
 const AdminToWelcome = () => {
   useEffect(() => {
     gsap.to(".admin--general__title", {
@@ -28,7 +28,9 @@ const AdminToWelcome = () => {
             </h1>
           </div>
           <div className="admin--general__title--btn">
-            <button onClick={() => navigate("addcomponent")}>Continue</button>
+            <button>
+              <NavLink to="/profile/">Continue</NavLink>
+            </button>
           </div>
         </div>
       </div>

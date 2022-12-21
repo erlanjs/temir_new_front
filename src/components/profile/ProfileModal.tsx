@@ -29,7 +29,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
   const [showModalTitle, setShowModalTitle] = React.useState("");
 
   const [image, setImage] = useState("");
-  const [cropData, setCropData] = useState("#");
+  const [cropData, setCropData] = useState("");
   const [cropper, setCropper] = useState<any>();
 
   const onChange = (e: any) => {
@@ -74,7 +74,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
   const [showModalTitleBg, setShowModalTitleBg] = React.useState("");
 
   const [imageBg, setImageBg] = useState("");
-  const [cropDataBg, setCropDataBg] = useState("#");
+  const [cropDataBg, setCropDataBg] = useState("");
   const [cropperBg, setCropperBg] = useState<any>();
 
   const onChangeBg = (e: any) => {
@@ -109,8 +109,8 @@ export default function ProfileModal({ modal, setModal }: IModal) {
 
     const data = new FormData();
     data.append("user", getIdUserParams());
-    data.append("avatar", img ? img : user.avatar);
-    data.append("background", imgBg ? imgBg : user.background);
+    data.append("avatar", img);
+    data.append("background", imgBg);
     data.append(
       "username",
       nameAndPosition.username ? nameAndPosition.username : user.username
@@ -188,7 +188,9 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         dispatch(getUser.actions.getUserError(error));
       });
   }, []);
-  
+
+  console.log(image);
+
   return (
     <div
       className={`modal ${
@@ -249,7 +251,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           </label>
           <input
             type="text"
-            defaultValue={user.username}
+            value={user.username}
             placeholder="Full name"
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>
@@ -262,13 +264,12 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         </div>
 
         <div className="text-black w-full pb-[8px] bg-[#E7E0EC] rounded-[4px]">
-
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Position:
           </label>
           <input
             type="text"
-            defaultValue={user.position}
+            value={user.position}
             placeholder="position"
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>

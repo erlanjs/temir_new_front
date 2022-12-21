@@ -31,7 +31,9 @@ const Products = () => {
           </p>
           {items.visit_website_url_name && (
             <button className="bg-[#0B0B0B] mb-[10px] w-full py-[23px] text-center fony-[700] text-[16px] rounded-[4px]">
-              {items.visit_website_url_name}
+              <a href={items.visit_website_url_url}>
+                {items.visit_website_url_name}
+              </a>
             </button>
           )}
         </div>
