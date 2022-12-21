@@ -43,8 +43,11 @@ export default function SignIn() {
       })
       .catch((error) => {
         console.log(error);
+        {
+          error.response.data.code === "WRONG_PASSWORD" &&
+            alert("Wrong password");
+        }
         setErrorValidate(true);
-        alert("Invalid password");
       });
   };
 

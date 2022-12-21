@@ -26,9 +26,6 @@ export default function Profile() {
     (items: any) => items.id === getIdUserParams()
   );
 
-  console.log(userCount);
-  console.log(count);
-
   useEffect(() => {
     API.get(`save-contact/counts/`)
       .then((res) => {
